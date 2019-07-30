@@ -1,0 +1,35 @@
+*1
+*a)Create a new table for your analysis called “employee_sales”.  
+*b)Load the table “employee” into this table.
+*c) Select these columns: Attrition, Department, JobSatisfaction & MonthlyIncome.   
+
+INSERT OVERWRITE TABLE employee_sales
+SELECT Attrition, Department, JobSatisfaction, MonthlyIncome
+FROM employee;
+
+
+
+*2)  Round the data found in the “MonthlyIncome” column to the nearest $1000
+
+INSERT OVERWRITE TABLE employee_sales
+SELECT Attrition, Department, JobSatisfaction, Round(MonthlyIncome, -3) AS MonthlyIncome
+FROM employee_sales;
+
+
+
+*3) Filter the data to only look at those items in the “Sales Department”.
+
+INSERT OVERWRITE TABLE employee_sales
+SELECT *
+FROM employee_sales
+WHERE Department LIKE "%Sales%";
+
+
+
+*4) Order the data by “JobSatisfaction” from highest to lowest.
+
+INSERT OVERWRITE TABLE employee_sales
+SELECT *
+FROM employee_sales
+ORDER BY JobSatisfaction DESC;
+
